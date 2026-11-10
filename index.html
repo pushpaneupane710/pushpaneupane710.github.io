@@ -1,0 +1,547 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pushpa Neupane | Data Portfolio</title>
+
+    <meta name="description"
+          content="Pushpa Neupane's data analytics portfolio. Exploring data using Python, SQL and Power BI. Based in Copenhagen, Denmark.">
+
+    <style>
+
+        /* 1. WEBSITE COLOURS */
+
+        :root {
+            --red: #C8102E;
+            --navy: #142A3D;
+            --white: #FFFFFF;
+            --light: #F5F7FA;
+            --grey: #64748B;
+        }
+
+        /* 2. GENERAL STYLING */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--light);
+            color: var(--navy);
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* 3. NAVIGATION */
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 8%;
+            background: var(--white);
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: bold;
+            color: var(--red);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav ul a {
+            color: var(--navy);
+            font-weight: 600;
+        }
+
+        nav ul a:hover {
+            color: var(--red);
+        }
+
+        /* 4. HERO SECTION */
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            background: var(--red);
+            color: var(--white);
+            padding: 100px 10%;
+            min-height: 440px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Abstract Danish flag-inspired decoration */
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 340px;
+            height: 340px;
+            right: 8%;
+            top: 50px;
+            border: 38px solid rgba(255,255,255,0.12);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 240px;
+            height: 240px;
+            right: 12%;
+            top: 100px;
+            border: 22px solid rgba(255,255,255,0.12);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 720px;
+        }
+
+        .location {
+            font-size: 14px;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 6vw, 65px);
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .hero h2 {
+            font-size: 22px;
+            font-weight: normal;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 17px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 6px;
+            background: var(--white);
+            color: var(--red);
+            font-weight: bold;
+            margin-right: 10px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid var(--white);
+        }
+
+        /* 5. GENERAL SECTIONS */
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 75px 25px;
+        }
+
+        .section-title {
+            font-size: 30px;
+            margin-bottom: 25px;
+        }
+
+        .section-title span {
+            color: var(--red);
+        }
+
+        /* 6. ABOUT SECTION */
+
+        .about p {
+            max-width: 850px;
+            color: var(--grey);
+            font-size: 17px;
+        }
+
+        /* 7. SKILLS SECTION */
+
+        .skills {
+            background: var(--white);
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .skill {
+            background: #FCE8EC;
+            color: var(--red);
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        /* 8. PROJECT SECTION */
+
+        .projects {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: var(--white);
+            padding: 28px;
+            border-radius: 12px;
+            border: 1px solid #E2E8F0;
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .project-card h3 {
+            margin-bottom: 12px;
+            color: var(--navy);
+        }
+
+        .project-card p {
+            color: var(--grey);
+            margin-bottom: 15px;
+        }
+
+        .project-card a {
+            color: var(--red);
+            font-weight: bold;
+        }
+
+        /* 9. CONTACT SECTION */
+
+        .contact {
+            background: var(--navy);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .contact .section-title {
+            color: var(--white);
+        }
+
+        .contact a {
+            color: #FFFFFF;
+            text-decoration: underline;
+        }
+
+        /* 10. FOOTER */
+
+        footer {
+            background: #0D1C29;
+            color: var(--white);
+            text-align: center;
+            padding: 22px;
+            font-size: 14px;
+        }
+
+        /* 11. MOBILE RESPONSIVENESS */
+
+        @media (max-width: 650px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero {
+                padding: 75px 8%;
+            }
+
+            .hero::before,
+            .hero::after {
+                right: -100px;
+            }
+
+            .hero h2 {
+                font-size: 19px;
+            }
+
+            .container {
+                padding: 50px 22px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+        <div class="logo">🇩🇰 Pushpa Neupane</div>
+
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- HERO SECTION -->
+
+    <header class="hero">
+
+        <div class="hero-content">
+
+            <div class="location">
+                📍 COPENHAGEN, DENMARK
+            </div>
+
+            <h1>Hello, I'm Pushpa! 👋</h1>
+
+            <h2>
+                Aspiring Data Analyst |
+                Python · SQL · Power BI
+            </h2>
+
+            <p>
+                Exploring data, discovering patterns
+                and turning information into
+                meaningful insights.
+            </p>
+
+            <a href="#projects" class="btn">
+                📊 Explore My Projects
+            </a>
+
+            <a href="#contact" class="btn btn-outline">
+                Let's Connect
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- ABOUT ME -->
+
+    <section class="container about" id="about">
+
+        <h2 class="section-title">
+            About <span>Me</span> 👩‍💻
+        </h2>
+
+        <p>
+            Hello! I'm Pushpa, based in Copenhagen,
+            Denmark. I have a Master's degree in
+            Communication Technology, specialising
+            in Network Distributed Systems.
+
+            I'm interested in data analytics,
+            data science and solving real-world
+            problems using data.
+
+            I enjoy working with Python, SQL and
+            Power BI to explore datasets, identify
+            patterns and communicate findings.
+
+            I'm continuously learning and building
+            projects to strengthen my analytical
+            and technical skills.
+        </p>
+
+    </section>
+
+
+    <!-- SKILLS -->
+
+    <section class="skills" id="skills">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                My Technical <span>Skills</span> 🛠️
+            </h2>
+
+            <div class="skill-list">
+
+                <span class="skill">🐍 Python</span>
+                <span class="skill">🗄️ SQL</span>
+                <span class="skill">📊 Power BI</span>
+                <span class="skill">🐼 Pandas</span>
+                <span class="skill">🔢 NumPy</span>
+                <span class="skill">📈 Data Analysis</span>
+                <span class="skill">🤖 Machine Learning</span>
+                <span class="skill">📉 Data Visualization</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+
+    <section class="container" id="projects">
+
+        <h2 class="section-title">
+            My <span>Projects</span> 📂
+        </h2>
+
+        <p style="margin-bottom:30px; color:#64748B;">
+            Practical projects where I apply my
+            analytical and technical skills.
+            More projects coming soon!
+        </p>
+
+        <div class="projects">
+
+            <div class="project-card">
+
+                <h3>📦 Supply Chain Analysis</h3>
+
+                <p>
+                    Exploring supply chain performance,
+                    delivery delays, revenue and
+                    business KPIs using data.
+                </p>
+
+                <a href="https://github.com/pushpaneupane710"
+                   target="_blank">
+                    View GitHub →
+                </a>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <h3>📞 Telecom Churn Prediction</h3>
+
+                <p>
+                    Analysing customer behaviour and
+                    developing a machine learning
+                    model to predict customer churn.
+                </p>
+
+                <a href="https://telecomcustomerchurnprediction-f8ntnyptytjxpbxsdlb8qu.streamlit.app/"
+                   target="_blank">
+                    View Dashboard →
+                </a>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <h3>🚗 Nepal Transport CO₂</h3>
+
+                <p>
+                    Exploring transport-related
+                    emissions and geographical
+                    differences in Nepal.
+                </p>
+
+                <a href="https://github.com/pushpaneupane710"
+                   target="_blank">
+                    View GitHub →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section class="contact" id="contact">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Let's <span>Connect</span> 🤝
+            </h2>
+
+            <p>
+                Interested in data, analytics
+                or opportunities in Denmark?
+                I'd love to connect!
+            </p>
+
+            <br>
+
+            <a href="https://www.linkedin.com/in/pushpa-neupane-5759a6263"
+               target="_blank">
+                LinkedIn
+            </a>
+
+            &nbsp; | &nbsp;
+
+            <a href="https://github.com/pushpaneupane710"
+               target="_blank">
+                GitHub
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            🇩🇰 Designed and built by Pushpa Neupane
+        </p>
+
+        <p>
+            © 2026 | Copenhagen, Denmark
+        </p>
+
+    </footer>
+
+</body>
+</html>
