@@ -1,700 +1,1175 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Pushpa Neupane | Data Portfolio</title>
-
-    <meta name="description"
-          content="Pushpa Neupane's data analytics portfolio. Exploring data using Python, SQL and Power BI. Based in Copenhagen, Denmark.">
-
-    <style>
-
-        :root {
-            --blue: #2563EB;
-            --navy: #142A3D;
-            --white: #FFFFFF;
-            --light: #F5F7FA;
-            --grey: #64748B;
-            --light-blue: #DBEAFE;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background: var(--light);
-            color: var(--navy);
-            line-height: 1.7;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        /* NAVIGATION */
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 22px 8%;
-            background: var(--white);
-        }
-
-        .logo {
-            font-size: 21px;
-            font-weight: bold;
-            color: var(--blue);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-        }
-
-        nav ul a {
-            color: var(--navy);
-            font-weight: 600;
-        }
-
-        nav ul a:hover {
-            color: var(--blue);
-        }
-
-        .cv-button {
-            background: var(--blue);
-            color: var(--white) !important;
-            padding: 9px 17px;
-            border-radius: 6px;
-        }
-
-        .cv-button:hover {
-            background: var(--navy);
-        }
-
-        /* HERO SECTION */
-
-        .hero {
-            position: relative;
-            overflow: hidden;
-            background: var(--blue);
-            color: var(--white);
-            padding: 100px 10%;
-            min-height: 440px;
-            display: flex;
-            align-items: center;
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            width: 340px;
-            height: 340px;
-            right: 8%;
-            top: 50px;
-            border: 38px solid rgba(255,255,255,0.12);
-            border-radius: 50%;
-        }
-
-        .hero::after {
-            content: "";
-            position: absolute;
-            width: 240px;
-            height: 240px;
-            right: 12%;
-            top: 100px;
-            border: 22px solid rgba(255,255,255,0.12);
-            border-radius: 50%;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 720px;
-        }
-
-        .location {
-            font-size: 14px;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-        }
-
-        .hero h1 {
-            font-size: clamp(38px, 6vw, 65px);
-            line-height: 1.15;
-            margin-bottom: 20px;
-        }
-
-        .hero h2 {
-            font-size: 22px;
-            font-weight: normal;
-            margin-bottom: 15px;
-        }
-
-        .hero p {
-            font-size: 17px;
-            margin-bottom: 30px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 25px;
-            border-radius: 6px;
-            background: var(--white);
-            color: var(--blue);
-            font-weight: bold;
-            margin-right: 10px;
-            transition: 0.3s;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            background: var(--light-blue);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--white);
-            border: 1px solid var(--white);
-        }
-
-        .btn-outline:hover {
-            background: var(--white);
-            color: var(--blue);
-        }
-
-        /* GENERAL SECTIONS */
-
-        .container {
-            max-width: 1100px;
-            margin: auto;
-            padding: 75px 25px;
-        }
-
-        .section-title {
-            font-size: 30px;
-            margin-bottom: 25px;
-        }
-
-        .section-title span {
-            color: var(--blue);
-        }
-
-        /* ABOUT */
-
-        .about p {
-            max-width: 850px;
-            color: var(--grey);
-            font-size: 17px;
-        }
-
-        /* SKILLS */
-
-        .skills {
-            background: var(--white);
-        }
-
-        .skill-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .skill {
-            background: var(--light-blue);
-            color: var(--blue);
-            padding: 12px 22px;
-            border-radius: 8px;
-            font-weight: bold;
-        }
-
-        /* PROJECTS */
-
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
-        }
-
-        .project-card {
-            background: var(--white);
-            padding: 28px;
-            border-radius: 12px;
-            border: 1px solid #E2E8F0;
-            border-top: 4px solid var(--blue);
-            transition: 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(37,99,235,0.12);
-        }
-
-        .project-image {
-            width: 100%;
-            display: block;
-            aspect-ratio: 16 / 9;
-            object-fit: contain;
-            object-position: center;
-            border-radius: 8px;
-            border: 1px solid #E2E8F0;
-            margin-bottom: 18px;
-            background: #F5F7FA;
-        }
-
-        .project-card h3 {
-            margin-bottom: 12px;
-            color: var(--navy);
-        }
-
-        .project-card p {
-            color: var(--grey);
-            margin-bottom: 15px;
-        }
-
-        .project-card a {
-            color: var(--blue);
-            font-weight: bold;
-        }
-
-        .project-card a:hover {
-            text-decoration: underline;
-        }
-
-        .project-tech {
-            font-size: 14px;
-            font-weight: bold;
-            color: var(--blue);
-        }
-
-        /* CONTACT */
-
-        .contact {
-            background: var(--navy);
-            color: var(--white);
-            text-align: center;
-        }
-
-        .contact .section-title {
-            color: var(--white);
-        }
-
-        .contact .section-title span {
-            color: #60A5FA;
-        }
-
-        .contact a {
-            color: #FFFFFF;
-            text-decoration: underline;
-        }
-
-        .contact a:hover {
-            color: #60A5FA;
-        }
-
-        /* FOOTER */
-
-        footer {
-            background: #0D1C29;
-            color: var(--white);
-            text-align: center;
-            padding: 22px;
-            font-size: 14px;
-        }
-
-        /* MOBILE RESPONSIVENESS */
-
-        @media (max-width: 650px) {
-
-            nav {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 15px;
-            }
-
-            .hero {
-                padding: 75px 8%;
-            }
-
-            .hero::before,
-            .hero::after {
-                right: -100px;
-            }
-
-            .hero h2 {
-                font-size: 19px;
-            }
-
-            .container {
-                padding: 50px 22px;
-            }
-
-        }
-
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pushpa Neupane | Data Analyst Portfolio</title>
+
+<style>
+:root {
+    --bg: #f5f7fb;
+    --surface: #ffffff;
+    --text: #17233b;
+    --muted: #64748b;
+    --primary: #bd1e35;
+    --secondary: #142b50;
+    --border: #e2e8f0;
+    --soft: #fcecef;
+    --shadow: 0 8px 30px rgba(20,43,80,.08);
+}
+
+body.dark {
+    --bg: #091426;
+    --surface: #12213a;
+    --text: #f1f5f9;
+    --muted: #b1bfd2;
+    --primary: #ff7188;
+    --secondary: #9bbcff;
+    --border: #293c59;
+    --soft: #29213b;
+    --shadow: 0 8px 30px rgba(0,0,0,.25);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    transition: background .3s, color .3s;
+}
+
+body.dark::before {
+    content: "✦      ·       ✧          ·      ✦       ·       ✧";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: #ffffff;
+    opacity: .23;
+    font-size: 25px;
+    letter-spacing: 25px;
+    line-height: 100px;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+body.dark::after {
+    content: "☾";
+    position: fixed;
+    top: 100px;
+    right: 8%;
+    font-size: 65px;
+    color: #f7df9c;
+    opacity: .75;
+    pointer-events: none;
+    z-index: -1;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    width: 90%;
+    max-width: 1150px;
+    margin: auto;
+}
+
+header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow);
+}
+
+.navbar {
+    min-height: 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 19px;
+    font-weight: bold;
+    color: var(--primary);
+    white-space: nowrap;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    transition: .2s;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+.theme-btn {
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    padding: 9px 13px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+section {
+    padding: 75px 0;
+    scroll-margin-top: 85px;
+}
+
+.section-title {
+    font-size: 30px;
+    color: var(--primary);
+    margin-bottom: 12px;
+}
+
+.section-subtitle {
+    color: var(--muted);
+    margin-bottom: 35px;
+}
+
+.hero {
+    min-height: 570px;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(120deg, var(--surface), var(--bg));
+}
+
+.hero-content {
+    max-width: 780px;
+}
+
+.hero-label {
+    display: inline-block;
+    padding: 7px 15px;
+    border-radius: 20px;
+    background: var(--soft);
+    color: var(--primary);
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(38px, 6vw, 65px);
+    line-height: 1.15;
+    margin-bottom: 15px;
+}
+
+.hero h1 span {
+    color: var(--primary);
+}
+
+.hero h2 {
+    font-size: 23px;
+    color: var(--secondary);
+    margin-bottom: 18px;
+}
+
+.hero p {
+    color: var(--muted);
+    max-width: 700px;
+    font-size: 16px;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 23px;
+    border-radius: 7px;
+    font-weight: bold;
+    font-size: 14px;
+    transition: .25s;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-secondary {
+    border: 1px solid var(--border);
+    color: var(--text);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 30px;
+}
+
+.panel {
+    background: var(--surface);
+    padding: 28px;
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    box-shadow: var(--shadow);
+}
+
+.panel p {
+    color: var(--muted);
+    margin-bottom: 12px;
+}
+
+.info-item {
+    margin-bottom: 13px;
+    font-size: 14px;
+}
+
+.info-item strong {
+    color: var(--primary);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.skill-card {
+    background: var(--surface);
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    transition: .25s;
+}
+
+.skill-card:hover,
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+}
+
+.skill-card h3 {
+    color: var(--primary);
+    margin-bottom: 12px;
+}
+
+.skill-card p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 15px;
+}
+
+.tag {
+    background: var(--soft);
+    color: var(--primary);
+    padding: 5px 11px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* PROJECTS */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 23px;
+}
+
+.project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 27px;
+    border-radius: 13px;
+    transition: .25s;
+}
+
+.project-card h3 {
+    color: var(--primary);
+    margin-bottom: 12px;
+}
+
+.project-card p {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.project-card h4 {
+    font-size: 13px;
+    margin-top: 15px;
+}
+
+.project-links {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.project-links a {
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.project-links a:hover {
+    text-decoration: underline;
+}
+
+/* HOW I WORK */
+
+.work-section {
+    background: var(--surface);
+}
+
+.work-flow {
+    max-width: 750px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.work-step {
+    width: 100%;
+    max-width: 610px;
+    text-align: center;
+    padding: 23px;
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    background: var(--bg);
+    transition: .25s;
+}
+
+.work-step:hover {
+    transform: scale(1.025);
+    box-shadow: var(--shadow);
+}
+
+.step-number {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+    font-weight: bold;
+}
+
+.work-step h3 {
+    color: var(--secondary);
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.work-step p {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.flow-arrow {
+    color: var(--primary);
+    font-size: 29px;
+    font-weight: bold;
+    padding: 8px 0;
+}
+
+.step-one { border-left: 5px solid #e05265; }
+.step-two { border-left: 5px solid #e9a23b; }
+.step-three { border-left: 5px solid #329b9b; }
+.step-four { border-left: 5px solid #6b81d8; }
+.step-five { border-left: 5px solid #3b9a69; }
+
+/* LEARNING */
+
+.learning-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.learning-card {
+    padding: 23px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+.learning-card h3 {
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.learning-card p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* AVAILABILITY */
+
+.availability-card {
+    background: var(--surface);
+    border: 2px solid #269b67;
+    border-radius: 15px;
+    padding: 35px;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+.available-label {
+    display: inline-block;
+    background: #dcfce7;
+    color: #166534;
+    padding: 9px 18px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 17px;
+}
+
+.availability-card h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.availability-card p {
+    color: var(--muted);
+}
+
+/* CONTACT */
+
+.contact-section {
+    background: var(--secondary);
+    color: white;
+    text-align: center;
+}
+
+.contact-section .section-title {
+    color: white;
+}
+
+.contact-section p {
+    color: #d5deed;
+    margin-bottom: 25px;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.contact-links a {
+    padding: 11px 19px;
+    border: 1px solid rgba(255,255,255,.4);
+    border-radius: 7px;
+    color: white;
+    font-size: 14px;
+    transition: .2s;
+}
+
+.contact-links a:hover {
+    background: white;
+    color: #142b50;
+}
+
+footer {
+    background: #091426;
+    color: #cbd5e1;
+    text-align: center;
+    padding: 20px;
+    font-size: 13px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 850px) {
+    .navbar {
+        flex-direction: column;
+        padding: 15px 0;
+    }
+
+    .nav-links {
+        justify-content: center;
+        gap: 13px;
+    }
+
+    .about-grid,
+    .skills-grid,
+    .learning-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 600px) {
+    .about-grid,
+    .skills-grid,
+    .projects-grid,
+    .learning-grid {
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        padding: 55px 0;
+    }
+
+    .hero {
+        min-height: auto;
+        padding: 75px 0;
+    }
+
+    .hero h2 {
+        font-size: 19px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+
+    .section-title {
+        font-size: 25px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <!-- NAVIGATION -->
+<!-- NAVIGATION -->
 
-    <nav>
-        <div class="logo">🇩🇰 Pushpa Neupane</div>
+<header>
+    <div class="container navbar">
 
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
+        <a href="#home" class="logo">🇩🇰 Pushpa Neupane</a>
 
-            <li>
-                <a href="./Pushpa_Neupane_CV.pdf"
-                   class="cv-button"
-                   download="Pushpa_Neupane_CV.pdf">
-                    ↓ CV
-                </a>
-            </li>
-        </ul>
-    </nav>
+        <nav class="nav-links">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#how-i-work">How I Work</a>
+            <a href="#learning">Learning</a>
+            <a href="#availability">Availability</a>
+            <a href="#contact">Contact</a>
+            <button class="theme-btn" id="themeToggle"
+                    aria-label="Toggle dark and light theme"
+                    title="Change theme">🌙</button>
+        </nav>
 
-    <!-- HERO SECTION -->
+    </div>
+</header>
 
-    <header class="hero">
+<!-- HERO -->
 
-        <div class="hero-content">
+<section class="hero" id="home">
+    <div class="container hero-content">
 
-            <div class="location">
-                📍 COPENHAGEN, DENMARK
-            </div>
-
-            <h1>Hello, I'm Pushpa Neupane! 👋</h1>
-
-            <h2>
-                Aspiring Data Analyst & Data Scientist
-                <br>
-                Python · SQL · Power BI
-            </h2>
-
-            <p>
-                Exploring data, discovering patterns
-                and turning information into
-                meaningful insights.
-            </p>
-
-            <a href="#projects" class="btn">
-                📊 Explore My Projects
-            </a>
-
-            <a href="#contact" class="btn btn-outline">
-                Let's Connect
-            </a>
-
+        <div class="hero-label">
+            Data Analytics | Business Intelligence | AI
         </div>
 
-    </header>
+        <h1>Hello, I'm <span>Pushpa Neupane</span></h1>
 
-    <!-- ABOUT ME -->
-
-    <section class="container about" id="about">
-
-        <h2 class="section-title">
-            About <span>Me</span> 👩‍💻
-        </h2>
+        <h2>Aspiring Data Analyst | Copenhagen, Denmark</h2>
 
         <p>
-            Hello! I'm Pushpa Neupane, based in Copenhagen,
-            Denmark. I have a Master's degree in
-            Communication Technology, specialising
-            in Network Distributed Systems.
-
-            My work is to uncover patterns, test assumptions,
-            and translate findings into actionable insights
-            that drive business impact by applying statistical methods.
+            I am a recent Master's graduate in Communication Technology,
+            specialising in Network and Distributed Systems. I enjoy
+            exploring data, identifying patterns and turning information
+            into insights that support better business decisions.
         </p>
 
-    </section>
-
-    <!-- SKILLS -->
-
-    <section class="skills" id="skills">
-
-        <div class="container">
-
-            <h2 class="section-title">
-                My Technical <span>Skills</span> 🛠️
-            </h2>
-
-            <div class="skill-list">
-
-                <span class="skill">🐍 Python</span>
-                <span class="skill">🗄️ SQL</span>
-                <span class="skill">📊 Power BI</span>
-                <span class="skill">🐼 Pandas</span>
-                <span class="skill">🔢 NumPy</span>
-                <span class="skill">📈 Data Analysis</span>
-                <span class="skill">🤖 Machine Learning</span>
-                <span class="skill">📉 Data Visualization</span>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- PROJECTS -->
-
-    <section class="container" id="projects">
-
-        <h2 class="section-title">
-            My <span>Projects</span> 📂
-        </h2>
-
-        <p style="margin-bottom:30px; color:#64748B;">
-            Practical projects where I apply my
-            analytical and technical skills.
-            More projects coming soon!
-        </p>
-
-        <div class="projects">
-
-            <!-- PROJECT 1 -->
-
-            <div class="project-card">
-
-                <h3>📦 DocManager — Smart PDF Document Manager</h3>
-
-                <p>
-                    DocManager — Smart PDF Document Manager. A PDF
-                    management system built with Python and Streamlit.
-                    Upload, tag, search, read, and track your documents
-                    — all from browser.
-                </p>
-
-                <p class="project-tech">
-                    Python | Streamlit | Modular coding | SQLite | Pandas | Pillow
-                </p>
-
-                <a href="https://github.com/pushpaneupane710/DocManager"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                    View GitHub →
-                </a>
-
-            </div>
-
-            <!-- PROJECT 2 -->
-
-            <div class="project-card">
-
-                <h3>📞 Telecom Churn Prediction</h3>
-
-                <p>
-                    Analysing customer behaviour and
-                    developing a machine learning
-                    model to predict customer churn.
-                </p>
-
-                <p class="project-tech">
-                    Python | Pandas | Scikit-learn | Streamlit
-                </p>
-
-                <a href="https://telecomcustomerchurnprediction-f8ntnyptytjxpbxsdlb8qu.streamlit.app/"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                    View Dashboard →
-                </a>
-
-            </div>
-
-            <!-- PROJECT 3 -->
-
-            <div class="project-card">
-
-                <h3>🚗 Rapido Data Analysis</h3>
-
-                <p>
-                    MySQL analysis of 104 Rapido ride records to
-                    identify vehicle usage patterns and support
-                    data-driven business decisions. Includes SQL
-                    queries, key insights, and 15 CSV result files
-                    for data analysts and recruiters.
-                </p>
-
-                <p class="project-tech">
-                    MySQL | Data Analysis
-                </p>
-
-                <a href="https://github.com/pushpaneupane710/Rapido-Analysis-in-MySQL"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                    View GitHub →
-                </a>
-
-            </div>
-
-            <!-- PROJECT 4 -->
-
-            <div class="project-card">
-
-                <h3>📣 Marketing Campaign Performance Analysis</h3>
-
-                <p>
-                    Analysing a multi-channel marketing campaign
-                    to compare campaign performance, customer
-                    engagement and new-customer purchases.
-                    Identifying which campaign and channel
-                    combinations offer the strongest results.
-                </p>
-
-                <p class="project-tech">
-                    Python | Pandas | Power BI | DAX | Power Query
-                </p>
-
-                <a href="https://github.com/pushpaneupane710/Marketing-Campaign-Performance-Analysis-"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                    View Project on GitHub →
-                </a>
-
-            </div>
-
-            <!-- PROJECT 5 -->
-
-            <div class="project-card">
-
-                <h3>⭐ GitHub Trending Tracker — Daywise</h3>
-
-                <p>
-                    A Python project for tracking GitHub trending
-                    repositories day by day, helping explore
-                    repository trends and changes over time.
-                </p>
-
-                <p class="project-tech">
-                    Python | GitHub Data Tracking | Data Analysis
-                </p>
-
-                <a href="https://github.com/pushpaneupane710/GithubTrendingTrackerDaywise"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                    View Project on GitHub →
-                </a>
-
-            </div>
-
-            <!-- PROJECT 6: CORPORATE FINANCIAL DASHBOARD -->
-
-            <div class="project-card">
-
-                <h3>📊 Corporate Financial &amp; Margin Performance Dashboard</h3>
-
-                <a href="./images/corporate-financial-dashboard-preview.png"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   aria-label="Open full dashboard screenshot">
-
-                    <img
-                        class="project-image"
-                        src="./images/corporate-financial-dashboard-preview.png"
-                        alt="Corporate Financial and Margin Performance Power BI dashboard showing gross sales, discounts, net sales, COGS, profit, gross profit percentage and product contribution"
-                        loading="lazy">
-
-                </a>
-
-                <p>
-                    Built a two-page Power BI dashboard to examine
-                    sales, discounts, cost of goods sold (COGS),
-                    profit and product contribution. Includes a
-                    simplified profit-and-loss view, DAX measures
-                    and an interactive discount-rate What-if
-                    analysis to compare scenario results with
-                    actual performance.
-                </p>
-
-                <p class="project-tech">
-                    Power BI Desktop | Power Query | DAX |
-                    Financial Analysis | What-if Parameters
-                </p>
-
-                <a href="https://github.com/pushpaneupane710/Datheon_Data_Analytics_-_Power_BI_Internship/tree/main/Coorporate_Financial_and_Margin_Performance"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                    View Project on GitHub →
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- CONTACT -->
-
-    <section class="contact" id="contact">
-
-        <div class="container">
-
-            <h2 class="section-title">
-                Let's <span>Connect</span> 🤝
-            </h2>
-
-            <p>
-                Interested in data, analytics
-                or opportunities in Denmark?
-                I'd love to connect!
-            </p>
-
-            <br>
-
-            <a href="https://www.linkedin.com/in/pushpa-neupane-5759a6263"
-               target="_blank"
-               rel="noopener noreferrer">
-                LinkedIn
+        <div class="hero-buttons">
+            <a href="#projects" class="btn btn-primary">
+                Explore My Projects →
             </a>
 
-            &nbsp; | &nbsp;
+            <a href="Pushpa_Neupane_CV.pdf"
+               class="btn btn-secondary" download>
+                Download CV ↓
+            </a>
+
+            <a href="https://www.linkedin.com/in/pushpa-neupane-5759a6263/"
+               target="_blank" class="btn btn-secondary">
+                LinkedIn ↗
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+    <div class="container">
+
+        <h2 class="section-title">About Me</h2>
+        <p class="section-subtitle">
+            A little about my background and interests.
+        </p>
+
+        <div class="about-grid">
+
+            <div class="panel">
+                <h3>My Background</h3>
+
+                <p>
+                    I hold a Master's degree in Communication Technology
+                    with a specialisation in Network and Distributed
+                    Systems.
+                </p>
+
+                <p>
+                    I am building my career in data analytics through
+                    practical projects, continuous learning and
+                    hands-on experience with analytical tools.
+                </p>
+
+                <p>
+                    My interests include business intelligence,
+                    sustainability analytics, responsible AI and
+                    data-driven decision-making.
+                </p>
+            </div>
+
+            <div class="panel">
+                <h3>Quick Information</h3>
+
+                <div class="info-item">
+                    <strong>Location:</strong> Copenhagen, Denmark
+                </div>
+
+                <div class="info-item">
+                    <strong>Education:</strong> Master's in Communication Technology
+                </div>
+
+                <div class="info-item">
+                    <strong>Career Focus:</strong> Data Analyst / BI Analyst
+                </div>
+
+                <div class="info-item">
+                    <strong>Interests:</strong> Data, AI and Sustainability
+                </div>
+
+                <div class="info-item">
+                    <strong>GitHub:</strong>
+                    <a href="https://github.com/pushpaneupane710"
+                       target="_blank">View my repositories ↗</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- SKILLS -->
+
+<section id="skills">
+    <div class="container">
+
+        <h2 class="section-title">Technical Skills</h2>
+
+        <p class="section-subtitle">
+            Tools and technologies I use in my analytical projects.
+        </p>
+
+        <div class="skills-grid">
+
+            <div class="skill-card">
+                <h3>📊 Data Analytics</h3>
+                <p>Working with data to understand patterns and business performance.</p>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Pandas</span>
+                    <span class="tag">NumPy</span>
+                    <span class="tag">Excel</span>
+                    <span class="tag">SQL</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <h3>📈 Visualisation</h3>
+                <p>Creating dashboards and communicating analytical findings.</p>
+                <div class="tags">
+                    <span class="tag">Power BI</span>
+                    <span class="tag">Tableau</span>
+                    <span class="tag">Streamlit</span>
+                    <span class="tag">DAX</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <h3>🤖 Machine Learning & AI</h3>
+                <p>Exploring predictive analytics and practical AI applications.</p>
+                <div class="tags">
+                    <span class="tag">Scikit-learn</span>
+                    <span class="tag">Machine Learning</span>
+                    <span class="tag">AI</span>
+                    <span class="tag">LLMs</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <h3>🗄️ Databases</h3>
+                <p>Working with structured datasets and querying information.</p>
+                <div class="tags">
+                    <span class="tag">MySQL</span>
+                    <span class="tag">SQLite</span>
+                    <span class="tag">SQL Joins</span>
+                    <span class="tag">Data Cleaning</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <h3>💻 Development</h3>
+                <p>Building and sharing practical analytical applications.</p>
+                <div class="tags">
+                    <span class="tag">Git</span>
+                    <span class="tag">GitHub</span>
+                    <span class="tag">Streamlit</span>
+                    <span class="tag">HTML/CSS</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <h3>🧠 Analytical Thinking</h3>
+                <p>Understanding problems and connecting analysis with decisions.</p>
+                <div class="tags">
+                    <span class="tag">Problem Solving</span>
+                    <span class="tag">Research</span>
+                    <span class="tag">Data Storytelling</span>
+                    <span class="tag">Business Insights</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects">
+    <div class="container">
+
+        <h2 class="section-title">My Projects</h2>
+
+        <p class="section-subtitle">
+            Practical projects demonstrating my learning and analytical approach.
+        </p>
+
+        <div class="projects-grid">
+
+            <div class="project-card">
+                <h3>📦 Supply Chain KPI Analysis</h3>
+
+                <p>
+                    Analysed over 180,000 orders to investigate delivery
+                    performance, revenue patterns and supply chain KPIs.
+                </p>
+
+                <h4>Problem</h4>
+                <p>
+                    How can businesses understand delivery delays and
+                    identify factors affecting operational performance?
+                </p>
+
+                <h4>Tools</h4>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">SQL</span>
+                    <span class="tag">Tableau</span>
+                    <span class="tag">Google Sheets</span>
+                </div>
+
+                <div class="project-links">
+                    <a href="https://github.com/pushpaneupane710"
+                       target="_blank">GitHub Profile ↗</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>📉 Telecom Customer Churn Prediction</h3>
+
+                <p>
+                    Built a machine learning model to investigate
+                    customer churn patterns and predict potential
+                    customer departures.
+                </p>
+
+                <h4>Problem</h4>
+                <p>
+                    Which customer characteristics may help identify
+                    customers at risk of leaving?
+                </p>
+
+                <h4>Tools</h4>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Pandas</span>
+                    <span class="tag">Scikit-learn</span>
+                    <span class="tag">Streamlit</span>
+                </div>
+
+                <div class="project-links">
+                    <a href="https://telecomcustomerchurnprediction-f8ntnyptytjxpbxsdlb8qu.streamlit.app/"
+                       target="_blank">Live Application ↗</a>
+                    <a href="https://github.com/pushpaneupane710"
+                       target="_blank">GitHub ↗</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>🌍 Nepal Transport CO₂ Analysis</h3>
+
+                <p>
+                    An exploratory project focused on understanding
+                    transport-related emissions in Kathmandu Valley
+                    and identifying lower-emission mobility options.
+                </p>
+
+                <h4>Problem</h4>
+                <p>
+                    How can transport data help people understand
+                    the environmental impact of their travel choices?
+                </p>
+
+                <h4>Tools</h4>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Data Analysis</span>
+                    <span class="tag">Machine Learning</span>
+                    <span class="tag">Visualisation</span>
+                </div>
+
+                <div class="project-links">
+                    <a href="https://github.com/pushpaneupane710"
+                       target="_blank">GitHub Profile ↗</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>📊 Marketing Campaign Performance</h3>
+
+                <p>
+                    Developed a Power BI dashboard to explore
+                    marketing campaign performance, sales channels
+                    and customer segments.
+                </p>
+
+                <h4>Problem</h4>
+                <p>
+                    Which marketing channels and campaigns generate
+                    better sales outcomes across customer groups?
+                </p>
+
+                <h4>Tools</h4>
+                <div class="tags">
+                    <span class="tag">Power BI</span>
+                    <span class="tag">DAX</span>
+                    <span class="tag">Data Visualisation</span>
+                    <span class="tag">Business Analysis</span>
+                </div>
+
+                <div class="project-links">
+                    <a href="https://github.com/pushpaneupane710/Marketing-Campaign-Performance-Analysis-"
+                       target="_blank">GitHub Repository ↗</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>💼 Corporate Financial Performance</h3>
+
+                <p>
+                    Analysed corporate financial and margin performance
+                    through an interactive Power BI dashboard.
+                </p>
+
+                <h4>Problem</h4>
+                <p>
+                    How can financial indicators help stakeholders
+                    understand profitability and business performance?
+                </p>
+
+                <h4>Tools</h4>
+                <div class="tags">
+                    <span class="tag">Power BI</span>
+                    <span class="tag">Excel</span>
+                    <span class="tag">DAX</span>
+                    <span class="tag">Financial Analysis</span>
+                </div>
+
+                <div class="project-links">
+                    <a href="https://github.com/pushpaneupane710/Datheon_Data_Analytics_-_Power_BI_Internship"
+                       target="_blank">GitHub Repository ↗</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- HOW I WORK -->
+
+<section id="how-i-work" class="work-section">
+    <div class="container">
+
+        <h2 class="section-title">How I Work</h2>
+
+        <p class="section-subtitle">
+            My approach to understanding a problem and turning data into useful insights.
+        </p>
+
+        <div class="work-flow">
+
+            <div class="work-step step-one">
+                <div class="step-number">01</div>
+                <h3>Understand the Problem</h3>
+                <p>
+                    I first understand the business question, objectives
+                    and what needs to be investigated.
+                </p>
+            </div>
+
+            <div class="flow-arrow">↓</div>
+
+            <div class="work-step step-two">
+                <div class="step-number">02</div>
+                <h3>Explore and Collect Data</h3>
+                <p>
+                    I identify relevant datasets and explore their
+                    structure, dimensions and data quality.
+                </p>
+            </div>
+
+            <div class="flow-arrow">↓</div>
+
+            <div class="work-step step-three">
+                <div class="step-number">03</div>
+                <h3>Clean and Analyse</h3>
+                <p>
+                    I handle missing values, investigate patterns,
+                    perform calculations and test assumptions.
+                </p>
+            </div>
+
+            <div class="flow-arrow">↓</div>
+
+            <div class="work-step step-four">
+                <div class="step-number">04</div>
+                <h3>Visualise and Communicate</h3>
+                <p>
+                    I create dashboards and visualisations to make
+                    findings easier to understand.
+                </p>
+            </div>
+
+            <div class="flow-arrow">↓</div>
+
+            <div class="work-step step-five">
+                <div class="step-number">05</div>
+                <h3>Generate Insights</h3>
+                <p>
+                    I explain what the results mean and identify
+                    possible actions that support better decisions.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- LEARNING -->
+
+<section id="learning">
+    <div class="container">
+
+        <h2 class="section-title">Learning & Development</h2>
+
+        <p class="section-subtitle">
+            Continuously developing my technical and professional skills.
+        </p>
+
+        <div class="learning-grid">
+
+            <div class="learning-card">
+                <h3>📊 Data Science</h3>
+                <p>
+                    TechLabs Digital Shaper – Data Science Track.
+                    Building practical knowledge through collaborative
+                    projects and hands-on learning.
+                </p>
+            </div>
+
+            <div class="learning-card">
+                <h3>🤖 AI & Agentic AI</h3>
+                <p>
+                    Exploring AI applications, AI agents, automation
+                    and practical language-model-based solutions.
+                </p>
+            </div>
+
+            <div class="learning-card">
+                <h3>🇩🇰 Danish Language</h3>
+                <p>
+                    Prøve i Dansk 2 – Module 1 at UCplus.
+                    Developing Danish communication skills for
+                    everyday life and professional environments.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- AVAILABILITY -->
+
+<section id="availability">
+    <div class="container">
+
+        <div class="availability-card">
+
+            <div class="available-label">
+                ✓ Available Immediately
+            </div>
+
+            <h3>Open to Full-Time Opportunities</h3>
+
+            <p>
+                I am actively looking for full-time opportunities in
+                Data Analytics, Business Intelligence and related roles
+                in Denmark.
+            </p>
+
+            <p style="margin-top:12px;">
+                I am also open to other opportunities where I can
+                contribute, learn and grow professionally.
+            </p>
+
+            <div style="margin-top:25px;">
+                <a href="mailto:YOUR_EMAIL@example.com"
+                   class="btn btn-primary">
+                    Contact Me →
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT: LET'S CONNECT AT THE END -->
+
+<section id="contact" class="contact-section">
+    <div class="container">
+
+        <h2 class="section-title">Let's Connect!</h2>
+
+        <p>
+            Interested in working together or discussing an opportunity?
+            I would be happy to connect.
+        </p>
+
+        <div class="contact-links">
+
+            <a href="mailto:YOUR_EMAIL@example.com">
+                ✉ Email Me
+            </a>
+
+            <a href="https://www.linkedin.com/in/pushpa-neupane-5759a6263/"
+               target="_blank">
+                LinkedIn ↗
+            </a>
 
             <a href="https://github.com/pushpaneupane710"
-               target="_blank"
-               rel="noopener noreferrer">
-                GitHub
+               target="_blank">
+                GitHub ↗
             </a>
 
         </div>
 
-    </section>
+    </div>
+</section>
 
-    <!-- FOOTER -->
+<!-- FOOTER -->
 
-    <footer>
+<footer>
+    <p>🇩🇰 Pushpa Neupane | Copenhagen, Denmark</p>
+    <p>Built with curiosity, continuous learning and data.</p>
+    <p>© <span id="year"></span> Pushpa Neupane. All rights reserved.</p>
+</footer>
 
-        <p>
-            🇩🇰 Designed and built by Pushpa Neupane
-        </p>
+<!-- THEME JAVASCRIPT -->
 
-        <p>
-            © 2026 | Copenhagen, Denmark
-        </p>
+<script>
+const themeToggle = document.getElementById("themeToggle");
 
-    </footer>
+// Apply saved theme, or default to light
+const savedTheme = localStorage.getItem("portfolio-theme");
+
+if (savedTheme === "dark") {
+    document.body.classList.add("dark");
+    themeToggle.textContent = "☀️";
+} else {
+    themeToggle.textContent = "🌙";
+}
+
+// Switch themes
+themeToggle.addEventListener("click", function () {
+
+    document.body.classList.toggle("dark");
+
+    if (document.body.classList.contains("dark")) {
+        localStorage.setItem("portfolio-theme", "dark");
+        themeToggle.textContent = "☀️";
+    } else {
+        localStorage.setItem("portfolio-theme", "light");
+        themeToggle.textContent = "🌙";
+    }
+
+});
+
+// Automatic footer year
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+</script>
 
 </body>
 </html>
