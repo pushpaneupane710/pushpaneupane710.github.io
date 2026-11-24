@@ -15,7 +15,7 @@
     --primary: #1e40af;
     --secondary: #142b50;
     --border: #e2e8f0;
-    --soft: #fcecef;
+    --soft: #eaf0ff;
     --shadow: 0 8px 30px rgba(20,43,80,.08);
 }
 
@@ -27,7 +27,7 @@ body.dark {
     --primary: #7da8ff;
     --secondary: #9bbcff;
     --border: #293c59;
-    --soft: #29213b;
+    --soft: #202f4c;
     --shadow: 0 8px 30px rgba(0,0,0,.25);
 }
 
@@ -47,14 +47,11 @@ body {
 }
 
 body.dark::before {
-    content: "✦      ·       ✧          ·      ✦       ·       ✧";
+    content: "✦     ·      ✧       ·      ✦       ·      ✧";
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    color: #ffffff;
-    opacity: .23;
+    inset: 0;
+    color: white;
+    opacity: .2;
     font-size: 25px;
     letter-spacing: 25px;
     line-height: 100px;
@@ -113,19 +110,45 @@ header {
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
     flex-wrap: wrap;
 }
 
 .nav-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 38px;
+    padding: 8px 13px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: var(--bg);
+    color: var(--text);
     font-size: 13px;
     font-weight: 600;
-    color: var(--text);
-    transition: .2s;
+    white-space: nowrap;
+    transition: .2s ease;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a:focus-visible {
     color: var(--primary);
+    background: var(--soft);
+    border-color: var(--primary);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 14px rgba(30,64,175,.13);
+    outline: none;
+}
+
+.nav-links a.active {
+    color: white;
+    background: var(--primary);
+    border-color: var(--primary);
+    box-shadow: 0 4px 12px rgba(30,64,175,.2);
+}
+
+body.dark .nav-links a.active {
+    color: #091426;
 }
 
 .theme-btn {
@@ -257,34 +280,32 @@ section {
     color: var(--primary);
 }
 
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+/* TECHNICAL SKILLS */
+
+.skills-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
 }
 
-.skill-card {
-    background: var(--surface);
-    padding: 25px;
-    border-radius: 12px;
-    border: 1px solid var(--border);
-    transition: .25s;
-}
-
-.skill-card:hover,
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow);
-}
-
-.skill-card h3 {
+.tag {
+    display: inline-block;
+    background: var(--soft);
     color: var(--primary);
-    margin-bottom: 12px;
+    padding: 6px 13px;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: bold;
+    transition: .2s ease;
 }
 
-.skill-card p {
-    color: var(--muted);
-    font-size: 14px;
+.tag:hover {
+    transform: translateY(-3px);
+    background: var(--primary);
+    color: white;
+    box-shadow: var(--shadow);
 }
 
 .tags {
@@ -292,15 +313,6 @@ section {
     flex-wrap: wrap;
     gap: 9px;
     margin-top: 15px;
-}
-
-.tag {
-    background: var(--soft);
-    color: var(--primary);
-    padding: 5px 11px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: bold;
 }
 
 /* PROJECTS */
@@ -317,6 +329,11 @@ section {
     padding: 27px;
     border-radius: 13px;
     transition: .25s;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
 }
 
 .project-card h3 {
@@ -531,11 +548,10 @@ footer {
 
     .nav-links {
         justify-content: center;
-        gap: 13px;
+        gap: 8px;
     }
 
     .about-grid,
-    .skills-grid,
     .learning-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -543,7 +559,6 @@ footer {
 
 @media(max-width: 600px) {
     .about-grid,
-    .skills-grid,
     .projects-grid,
     .learning-grid {
         grid-template-columns: 1fr;
@@ -564,6 +579,7 @@ footer {
 
     .nav-links a {
         font-size: 12px;
+        padding: 7px 10px;
     }
 
     .section-title {
@@ -579,7 +595,6 @@ footer {
 
 <header>
     <div class="container navbar">
-
         <a href="#home" class="logo">🇩🇰 Pushpa Neupane</a>
 
         <nav class="nav-links">
@@ -594,7 +609,6 @@ footer {
                     aria-label="Toggle dark and light theme"
                     title="Change theme">🌙</button>
         </nav>
-
     </div>
 </header>
 
@@ -612,12 +626,13 @@ footer {
         <h2>Aspiring Data Analyst | Copenhagen, Denmark</h2>
 
         <p>
-            I am a recent <strong> Master's graduate in Communication Technology,
-            specialising in Network and Distributed Systems </strong>. I enjoy
+            I am a recent <strong>Master's graduate in Communication Technology,
+            specialising in Network and Distributed Systems</strong>. I enjoy
             exploring data, identifying patterns and turning information
-            into insights that support business decisions. 
-            
-            <strong> From my end, you'll receive smart, strategic, data-driven recommendations for your organization.</strong>
+            into insights that support business decisions.
+
+            <strong>From my end, you'll receive smart, strategic,
+            data-driven recommendations for your organisation.</strong>
         </p>
 
         <div class="hero-buttons">
@@ -631,11 +646,11 @@ footer {
             </a>
 
             <a href="https://www.linkedin.com/in/pushpa-neupane-5759a6263/"
-               target="_blank" class="btn btn-secondary">
+               target="_blank" rel="noopener noreferrer"
+               class="btn btn-secondary">
                 LinkedIn ↗
             </a>
         </div>
-
     </div>
 </section>
 
@@ -695,7 +710,9 @@ footer {
                 <div class="info-item">
                     <strong>GitHub:</strong>
                     <a href="https://github.com/pushpaneupane710"
-                       target="_blank">View my repositories ↗</a>
+                       target="_blank" rel="noopener noreferrer">
+                       View my repositories ↗
+                    </a>
                 </div>
             </div>
 
@@ -703,87 +720,36 @@ footer {
     </div>
 </section>
 
-<!-- SKILLS -->
+<!-- TECHNICAL SKILLS -->
 
 <section id="skills">
     <div class="container">
 
         <h2 class="section-title">Technical Skills</h2>
 
-        <p class="section-subtitle">
-            Tools and technologies I use in my analytical projects.
-        </p>
-
-        <div class="skills-grid">
-
-            <div class="skill-card">
-                <h3>📊 Data Analytics</h3>
-                <p>Working with data to understand patterns and business performance.</p>
-                <div class="tags">
-                    <span class="tag">Python</span>
-                    <span class="tag">Pandas</span>
-                    <span class="tag">NumPy</span>
-                    <span class="tag">Excel</span>
-                    <span class="tag">SQL</span>
-                </div>
-            </div>
-
-            <div class="skill-card">
-                <h3>📈 Visualisation</h3>
-                <p>Creating dashboards and communicating analytical findings.</p>
-                <div class="tags">
-                    <span class="tag">Power BI</span>
-                    <span class="tag">Tableau</span>
-                    <span class="tag">Streamlit</span>
-                    <span class="tag">DAX</span>
-                </div>
-            </div>
-
-            <div class="skill-card">
-                <h3>🤖 Machine Learning & AI</h3>
-                <p>Exploring predictive analytics and practical AI applications.</p>
-                <div class="tags">
-                    <span class="tag">Scikit-learn</span>
-                    <span class="tag">Machine Learning</span>
-                    <span class="tag">AI</span>
-                    <span class="tag">LLMs</span>
-                </div>
-            </div>
-
-            <div class="skill-card">
-                <h3>🗄️ Databases</h3>
-                <p>Working with structured datasets and querying information.</p>
-                <div class="tags">
-                    <span class="tag">MySQL</span>
-                    <span class="tag">SQLite</span>
-                    <span class="tag">SQL Joins</span>
-                    <span class="tag">Data Cleaning</span>
-                </div>
-            </div>
-
-            <div class="skill-card">
-                <h3>💻 Development</h3>
-                <p>Building and sharing practical analytical applications.</p>
-                <div class="tags">
-                    <span class="tag">Git</span>
-                    <span class="tag">GitHub</span>
-                    <span class="tag">Streamlit</span>
-                    <span class="tag">HTML/CSS</span>
-                </div>
-            </div>
-
-            <div class="skill-card">
-                <h3>🧠 Analytical Thinking</h3>
-                <p>Understanding problems and connecting analysis with decisions.</p>
-                <div class="tags">
-                    <span class="tag">Problem Solving</span>
-                    <span class="tag">Research</span>
-                    <span class="tag">Data Storytelling</span>
-                    <span class="tag">Business Insights</span>
-                </div>
-            </div>
-
+        <div class="skills-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">NumPy</span>
+            <span class="tag">Excel</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Power BI</span>
+            <span class="tag">Tableau</span>
+            <span class="tag">Streamlit</span>
+            <span class="tag">DAX</span>
+            <span class="tag">Scikit-learn</span>
+            <span class="tag">Machine Learning</span>
+            <span class="tag">AI</span>
+            <span class="tag">LLMs</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">SQLite</span>
+            <span class="tag">SQL Joins</span>
+            <span class="tag">Data Cleaning</span>
+            <span class="tag">Git</span>
+            <span class="tag">GitHub</span>
+            <span class="tag">HTML/CSS</span>
         </div>
+
     </div>
 </section>
 
@@ -799,6 +765,8 @@ footer {
         </p>
 
         <div class="projects-grid">
+
+            <!-- SUPPLY CHAIN -->
 
             <div class="project-card">
                 <h3>📦 Supply Chain KPI Analysis</h3>
@@ -824,9 +792,13 @@ footer {
 
                 <div class="project-links">
                     <a href="https://github.com/pushpaneupane710"
-                       target="_blank">GitHub Profile ↗</a>
+                       target="_blank" rel="noopener noreferrer">
+                       GitHub Profile ↗
+                    </a>
                 </div>
             </div>
+
+            <!-- TELECOM CHURN -->
 
             <div class="project-card">
                 <h3>📉 Telecom Customer Churn Prediction</h3>
@@ -853,11 +825,17 @@ footer {
 
                 <div class="project-links">
                     <a href="https://telecomcustomerchurnprediction-f8ntnyptytjxpbxsdlb8qu.streamlit.app/"
-                       target="_blank">Live Application ↗</a>
+                       target="_blank" rel="noopener noreferrer">
+                       Live Application ↗
+                    </a>
                     <a href="https://github.com/pushpaneupane710"
-                       target="_blank">GitHub ↗</a>
+                       target="_blank" rel="noopener noreferrer">
+                       GitHub ↗
+                    </a>
                 </div>
             </div>
+
+            <!-- NEPAL TRANSPORT -->
 
             <div class="project-card">
                 <h3>🌍 Nepal Transport CO₂ Analysis</h3>
@@ -884,9 +862,13 @@ footer {
 
                 <div class="project-links">
                     <a href="https://github.com/pushpaneupane710"
-                       target="_blank">GitHub Profile ↗</a>
+                       target="_blank" rel="noopener noreferrer">
+                       GitHub Profile ↗
+                    </a>
                 </div>
             </div>
+
+            <!-- MARKETING CAMPAIGN -->
 
             <div class="project-card">
                 <h3>📊 Marketing Campaign Performance</h3>
@@ -913,9 +895,13 @@ footer {
 
                 <div class="project-links">
                     <a href="https://github.com/pushpaneupane710/Marketing-Campaign-Performance-Analysis-"
-                       target="_blank">GitHub Repository ↗</a>
+                       target="_blank" rel="noopener noreferrer">
+                       GitHub Repository ↗
+                    </a>
                 </div>
             </div>
+
+            <!-- CORPORATE FINANCIAL -->
 
             <div class="project-card">
                 <h3>💼 Corporate Financial Performance</h3>
@@ -941,7 +927,75 @@ footer {
 
                 <div class="project-links">
                     <a href="https://github.com/pushpaneupane710/Datheon_Data_Analytics_-_Power_BI_Internship"
-                       target="_blank">GitHub Repository ↗</a>
+                       target="_blank" rel="noopener noreferrer">
+                       GitHub Repository ↗
+                    </a>
+                </div>
+            </div>
+
+            <!-- SMART PDF MANAGER -->
+
+            <div class="project-card">
+                <h3>📄 Smart PDF Document Manager</h3>
+
+                <p>
+                    Built a browser-based PDF management application
+                    that lets users upload, organise, tag, search and
+                    read documents.
+                </p>
+
+                <h4>Problem</h4>
+                <p>
+                    How can users manage and find their PDF documents
+                    more easily in one place?
+                </p>
+
+                <h4>Tools</h4>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Streamlit</span>
+                    <span class="tag">SQLite</span>
+                    <span class="tag">Pandas</span>
+                </div>
+
+                <div class="project-links">
+                    <a href="https://github.com/pushpaneupane710/DocManager"
+                       target="_blank" rel="noopener noreferrer">
+                       GitHub Repository ↗
+                    </a>
+                </div>
+            </div>
+
+            <!-- GITHUB TRENDING TRACKER -->
+
+            <div class="project-card">
+                <h3>📈 GitHub Trending Tracker – Daywise</h3>
+
+                <p>
+                    Created a Python project to track GitHub trending
+                    repositories day by day and explore how repository
+                    trends change over time.
+                </p>
+
+                <h4>Problem</h4>
+                <p>
+                    How can developers follow trending repositories
+                    and observe changes in GitHub activity over time?
+                </p>
+
+                <h4>Tools</h4>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">GitHub Data</span>
+                    <span class="tag">Data Tracking</span>
+                    <span class="tag">Data Analysis</span>
+                </div>
+
+                <div class="project-links">
+                    <a href="https://github.com/pushpaneupane710/GithubTrendingTrackerDaywise"
+                       target="_blank" rel="noopener noreferrer">
+                       GitHub Repository ↗
+                    </a>
                 </div>
             </div>
 
@@ -1087,7 +1141,7 @@ footer {
             </p>
 
             <div style="margin-top:25px;">
-                <a href="mailto:YOUR_EMAIL@example.com"
+                <a href="mailto:pushpaneupane710@gmail.com"
                    class="btn btn-primary">
                     Contact Me →
                 </a>
@@ -1097,7 +1151,7 @@ footer {
     </div>
 </section>
 
-<!-- CONTACT: LET'S CONNECT AT THE END -->
+<!-- CONTACT -->
 
 <section id="contact" class="contact-section">
     <div class="container">
@@ -1111,17 +1165,17 @@ footer {
 
         <div class="contact-links">
 
-            <a href="mailto:YOUR_EMAIL@example.com">
+            <a href="mailto:pushpaneupane710@gmail.com">
                 ✉ Email Me
             </a>
 
             <a href="https://www.linkedin.com/in/pushpa-neupane-5759a6263/"
-               target="_blank">
+               target="_blank" rel="noopener noreferrer">
                 LinkedIn ↗
             </a>
 
             <a href="https://github.com/pushpaneupane710"
-               target="_blank">
+               target="_blank" rel="noopener noreferrer">
                 GitHub ↗
             </a>
 
@@ -1138,12 +1192,12 @@ footer {
     <p>© <span id="year"></span> Pushpa Neupane. All rights reserved.</p>
 </footer>
 
-<!-- THEME JAVASCRIPT -->
+<!-- JAVASCRIPT -->
 
 <script>
 const themeToggle = document.getElementById("themeToggle");
 
-// Apply saved theme, or default to light
+// Load saved theme
 const savedTheme = localStorage.getItem("portfolio-theme");
 
 if (savedTheme === "dark") {
@@ -1153,7 +1207,7 @@ if (savedTheme === "dark") {
     themeToggle.textContent = "🌙";
 }
 
-// Switch themes
+// Switch between dark and light themes
 themeToggle.addEventListener("click", function () {
 
     document.body.classList.toggle("dark");
@@ -1165,8 +1219,30 @@ themeToggle.addEventListener("click", function () {
         localStorage.setItem("portfolio-theme", "light");
         themeToggle.textContent = "🌙";
     }
-
 });
+
+// Highlight navigation tab for the visible section
+const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+const pageSections = document.querySelectorAll('section[id]');
+
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            navLinks.forEach((link) => {
+                link.classList.toggle(
+                    'active',
+                    link.getAttribute('href') === `#${entry.target.id}`
+                );
+            });
+        }
+    });
+}, {
+    root: null,
+    rootMargin: '-25% 0px -60% 0px',
+    threshold: 0
+});
+
+pageSections.forEach((section) => sectionObserver.observe(section));
 
 // Automatic footer year
 document.getElementById("year").textContent =
